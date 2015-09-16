@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+  - local_action: command ansible-galaxy install --role-file=requirements.yml --roles-path=roles --ignore-errors
+    sudo: false

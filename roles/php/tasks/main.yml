@@ -1,0 +1,22 @@
+---
+
+# phalcon is not yet compatible with php5.6
+#  - name: Add php56 Repository
+#    sudo: yes
+#    apt_repository: repo='ppa:ondrej/php5-5.6'
+
+  - name: php install
+    action: apt name={{ item }} state=installed
+    with_items:
+       - php5-fpm
+       - php5
+
+  - name: php module install
+    action: apt name={{ item }} state=installed
+    with_items:
+       - php5-curl
+       - php5-cli
+       - php5-imagick
+
+  - name: php set timezone
+    lineinfile: dest=/etc/php5/fpm/php.ini regexp='date.timezone' line='date.timezone=Europe/Paris'

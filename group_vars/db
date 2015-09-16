@@ -1,0 +1,10 @@
+---
+mysql_root_password: 'root'
+mysql_databases:
+  - name: mydb
+# List of users to be created (optional)
+mysql_users:
+  - name: myuser
+    pass: mypass
+    priv: "*.*:ALL"                     # optional, defaults to "*.*:ALL"
+    host: "%"                           # optional, defaults to "localhost"

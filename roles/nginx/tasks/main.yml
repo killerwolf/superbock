@@ -1,0 +1,13 @@
+---
+- name: Update apt
+  sudo: yes
+  apt: update_cache=yes
+
+- name: Install System Packages
+  sudo: yes
+  apt: pkg={{ item }} state=latest
+  with_items: ["nginx"]
+
+- name: Disable default vhost
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify: restart nginx
